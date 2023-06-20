@@ -1,17 +1,23 @@
-import { useState } from "react";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Workout } from "../types";
-import WorkoutOptionDetailDialog from "./WorkoutOptionDetailDialog";
+import { useWorkoutContext } from "../providers/WorkoutProvider";
 
 interface WorkoutOptionItemProps {
   workout: Workout;
 }
 
 const WorkoutOptionItem = (props: WorkoutOptionItemProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  console.log("isOpen", isOpen);
-
   const { workout } = props;
+  const { setSelectedWorkout } = useWorkoutContext();
+  const router = useRouter();
+
+  const handleOnClick = (workout: Workout) => {
+    setSelectedWorkout(workout);
+    router.push("/details");
+  };
+
   return (
     <>
       <tr>
@@ -25,7 +31,7 @@ const WorkoutOptionItem = (props: WorkoutOptionItemProps) => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              setIsOpen(true);
+              handleOnClick(workout);
             }}
             className="bg-hover-neonGreen p-2"
           >
@@ -33,9 +39,6 @@ const WorkoutOptionItem = (props: WorkoutOptionItemProps) => {
           </button>
         </td>
       </tr>
-      {isOpen && (
-        <WorkoutOptionDetailDialog setIsOpen={setIsOpen} isOpen={isOpen} />
-      )}
     </>
   );
 };
