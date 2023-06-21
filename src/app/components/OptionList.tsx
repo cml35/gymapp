@@ -7,7 +7,7 @@ const OptionList = () => {
         <Link href="/workouts">Browse Workouts</Link>
       </button>
       <button className="hover:bg-hover-neonGreen">
-        <Link href="/workouts">Create Workout</Link>
+        <Link href="/create">Create Workout</Link>
       </button>
     </div>
   );

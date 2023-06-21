@@ -1,20 +1,18 @@
-// import { useState } from "react";
 "use client";
 import { useContext } from "react";
 import WorkoutOptionDetail from "../components/WorkoutOptionDetail";
 import { useWorkoutContext } from "../providers/WorkoutProvider";
-// import { WorkoutContext } from "../context/WorkoutContext";
 
 const Details = () => {
   const { selectedWorkout } = useWorkoutContext();
 
   console.log("selected workout", selectedWorkout);
   return (
-    <>
-      {/* <WorkoutContext.Provider value={{ workout, setWorkout }}> */}
-      {selectedWorkout && <WorkoutOptionDetail workout={selectedWorkout} />}
-      {/* </WorkoutContext.Provider> */}
-    </>
+    selectedWorkout && (
+      <div className="h-screen w-1/2 flex flex-col items-center justify-center m-auto">
+        <WorkoutOptionDetail workout={selectedWorkout} />
+      </div>
+    )
   );
 };
 

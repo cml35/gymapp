@@ -39,6 +39,10 @@ const Workouts = () => {
                       <th
                         scope="col"
                         className="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                      ></th>
+                      <th
+                        scope="col"
+                        className="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase"
                       >
                         Name
                       </th>
