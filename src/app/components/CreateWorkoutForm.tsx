@@ -25,8 +25,6 @@ const CreateWorkoutForm: React.FC = () => {
     } catch (error) {
       console.error(error);
     }
-    // TODO
-    // You will implement this next ...
   };
 
   return (

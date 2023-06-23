@@ -1,32 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { GetServerSideProps } from "next";
 import { Workout } from "../types";
 import WorkoutOptionItem from "../components/WorkoutOptionItem";
-import prisma from "../../../lib/prisma";
 
-// async function getWorkouts() {
-//   const workouts = await prisma.workout.findMany();
-//   return workouts;
-// }
-
-interface Workouts {
-  workouts: [Workout];
-}
-
-// export async function getServerSideProps() {
-//   const workouts = await prisma.workout.findMany();
-//   console.log("workoutsssssss yo", workouts);
-//   return {
-//     props: { workouts },
-//     revalidate: 10,
-//   };
-// }
-
-//@ts-ignore
-const Workouts = async ({ workouts }: Workouts) => {
-  // const workouts = await getWorkouts();
-  console.log("workoutssss", workouts);
+const Workouts = () => {
   const [data, setData] = useState<Workout[]>([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -62,10 +39,6 @@ const Workouts = async ({ workouts }: Workouts) => {
                       <th
                         scope="col"
                         className="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                      ></th>
-                      <th
-                        scope="col"
-                        className="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase"
                       >
                         Name
                       </th>
@@ -87,7 +60,6 @@ const Workouts = async ({ workouts }: Workouts) => {
                         <WorkoutOptionItem key={index} workout={workout} />
                       );
                     })}
-                    {/* <WorkoutList /> */}
                   </tbody>
                 </table>
               </div>
