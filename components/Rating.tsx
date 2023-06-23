@@ -1,4 +1,4 @@
-import { Workout } from "../types";
+import { Workout } from "../app/types";
 
 interface RatingProps {
   workout: Workout;

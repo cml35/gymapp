@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Workout } from "../types";
+import { Workout } from "../app/types";
 import bicepCurlGiphy from "../images/bicep_curl.gif";
 import Rating from "./Rating";
 

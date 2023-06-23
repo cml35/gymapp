@@ -1,26 +1,30 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Workout } from "../types";
-import WorkoutOptionItem from "../components/WorkoutOptionItem";
+import { Workout } from "../../types";
+import WorkoutOptionItem from "../../components/WorkoutOptionItem";
+import prisma from "../../lib/prisma";
 
-const Workouts = () => {
+export async function getStaticProps() {
+  const workouts = await prisma.workout.findMany();
+
+  return {
+    props: { workouts },
+    revalidate: 10,
+  };
+}
+
+//@ts-ignore
+const Workouts = ({ workouts }) => {
   const [data, setData] = useState<Workout[]>([]);
   const [isLoading, setLoading] = useState(false);
 
+  console.log("workouts", workouts);
+
   useEffect(() => {
     setLoading(true);
-    fetch("https://api.api-ninjas.com/v1/exercises?muscle=biceps", {
-      method: "GET",
-      headers: {
-        "X-Api-Key": "bUsQLuZr0xnhaKpbrDSstQ==UDBWraUk0OXC6UTX",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  }, []);
+    setData(workouts);
+    setLoading(false);
+  }, [workouts]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No profile data</p>;

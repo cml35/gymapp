@@ -1,6 +1,6 @@
 "use client";
-import WorkoutOptionDetail from "../components/WorkoutOptionDetail";
-import { useWorkoutContext } from "../providers/WorkoutProvider";
+import WorkoutOptionDetail from "../../components/WorkoutOptionDetail";
+import { useWorkoutContext } from "../../providers/WorkoutProvider";
 
 const Details = () => {
   const { selectedWorkout } = useWorkoutContext();

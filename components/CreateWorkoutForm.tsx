@@ -21,7 +21,7 @@ const CreateWorkoutForm: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      await router.push("/myworkout");
+      await router.push("/workout");
     } catch (error) {
       console.error(error);
     }
