@@ -1,9 +1,32 @@
 "use client";
 import { useState, useEffect } from "react";
+import { GetServerSideProps } from "next";
 import { Workout } from "../types";
 import WorkoutOptionItem from "../components/WorkoutOptionItem";
+import prisma from "../../../lib/prisma";
 
-const Workouts = () => {
+// async function getWorkouts() {
+//   const workouts = await prisma.workout.findMany();
+//   return workouts;
+// }
+
+interface Workouts {
+  workouts: [Workout];
+}
+
+// export async function getServerSideProps() {
+//   const workouts = await prisma.workout.findMany();
+//   console.log("workoutsssssss yo", workouts);
+//   return {
+//     props: { workouts },
+//     revalidate: 10,
+//   };
+// }
+
+//@ts-ignore
+const Workouts = async ({ workouts }: Workouts) => {
+  // const workouts = await getWorkouts();
+  console.log("workoutssss", workouts);
   const [data, setData] = useState<Workout[]>([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -64,6 +87,7 @@ const Workouts = () => {
                         <WorkoutOptionItem key={index} workout={workout} />
                       );
                     })}
+                    {/* <WorkoutList /> */}
                   </tbody>
                 </table>
               </div>

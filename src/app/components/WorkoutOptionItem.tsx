@@ -16,6 +16,7 @@ const WorkoutOptionItem = (props: WorkoutOptionItemProps) => {
   const router = useRouter();
 
   const handleOnClick = (workout: Workout) => {
+    console.log("workouttt", workout);
     setSelectedWorkout(workout);
     router.push("/details");
   };
