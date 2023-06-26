@@ -21,6 +21,18 @@ const ExerciseItem = (props: ExerciseItemProps) => {
     router.push("/exercise-details");
   };
 
+  const handleDelete = async (exercise: Exercise) => {
+    const { id } = exercise;
+    try {
+      await fetch(`/api/post/${id}`, {
+        method: "DELETE",
+      });
+      await router.push("/exercise-list");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <tr>
@@ -42,6 +54,17 @@ const ExerciseItem = (props: ExerciseItemProps) => {
             className="bg-hover-neonGreen p-2"
           >
             More info
+          </button>
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleDelete(exercise);
+            }}
+            className="bg-hover-neonGreen p-2"
+          >
+            Delete
           </button>
         </td>
       </tr>

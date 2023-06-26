@@ -1,4 +1,5 @@
 export interface Exercise {
+  id: string;
   difficulty: string;
   equipment: string;
   instructions: string;
