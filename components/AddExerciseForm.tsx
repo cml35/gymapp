@@ -29,7 +29,7 @@ const AddExerciseForm: React.FC = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold mb-10">Add new exercise</h1>
+      <h1 className="text-3xl font-semibold mb-40">Add new exercise</h1>
       <div className="flex flex-row color-black">
         <form onSubmit={submitExercise}>
           <p className="mr-10">Name</p>

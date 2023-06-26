@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Exercise } from "../types";
 import { useExerciseContext } from "../providers/ExerciseProvider";
 import dumbbellImg from "../images/dumbbell.jpeg";
+import RootLayout from "../layout";
 
 interface ExerciseItemProps {
   exercise: Exercise;
