@@ -42,7 +42,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <nav className="text-black text-xl bg-white px-10 pt-2 border outline-dotted">
+    <nav className="text-black text-xl px-10 pt-2 border outline-dotted">
       <div className="-mb-px flex justify-center">
         <div className="no-underline uppercase tracking-wide font-bold text-xs py-3 mr-8 hover:bg-hover-neonGreen">
           <UserStatus session={session} status={status} />

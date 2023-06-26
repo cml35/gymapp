@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+#exerciseForm input[type="text"] {
+  color: black !important;
+}
