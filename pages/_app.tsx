@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { ExerciseProvider } from "../providers/WorkoutProvider";
+import { ExerciseProvider } from "../providers/ExerciseProvider";
 import { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 

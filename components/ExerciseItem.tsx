@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Exercise } from "../types";
-import { useExerciseContext } from "../providers/WorkoutProvider";
+import { useExerciseContext } from "../providers/ExerciseProvider";
 import dumbbellImg from "../images/dumbbell.jpeg";
 
 interface ExerciseItemProps {
@@ -12,11 +12,11 @@ interface ExerciseItemProps {
 
 const ExerciseItem = (props: ExerciseItemProps) => {
   const { exercise } = props;
-  const { setSelectedExercise: setSelectedWorkout } = useExerciseContext();
+  const { setSelectedExercise } = useExerciseContext();
   const router = useRouter();
 
   const handleOnClick = (exercise: Exercise) => {
-    setSelectedWorkout(exercise);
+    setSelectedExercise(exercise);
     router.push("/exercise-details");
   };
 

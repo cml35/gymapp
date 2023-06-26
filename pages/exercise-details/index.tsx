@@ -1,14 +1,14 @@
 "use client";
 import ExerciseDetails from "../../components/ExerciseDetails";
-import { useExerciseContext } from "../../providers/WorkoutProvider";
+import { useExerciseContext } from "../../providers/ExerciseProvider";
 
 const Details = () => {
-  const { selectedExercise: selectedWorkout } = useExerciseContext();
+  const { selectedExercise } = useExerciseContext();
 
   return (
-    selectedWorkout && (
+    selectedExercise && (
       <div className="h-screen w-1/2 flex flex-col items-center justify-center m-auto">
-        <ExerciseDetails exercise={selectedWorkout} />
+        <ExerciseDetails exercise={selectedExercise} />
       </div>
     )
   );
