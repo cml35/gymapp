@@ -12,11 +12,12 @@ interface WorkoutOptionItemProps {
 
 const WorkoutOptionItem = (props: WorkoutOptionItemProps) => {
   const { workout } = props;
-  const { setSelectedWorkout } = useWorkoutContext();
+  const { selectedWorkout, setSelectedWorkout } = useWorkoutContext();
   const router = useRouter();
 
   const handleOnClick = (workout: Workout) => {
     setSelectedWorkout(workout);
+    console.log("workout selected", selectedWorkout);
     router.push("/details");
   };
 

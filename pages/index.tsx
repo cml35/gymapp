@@ -5,7 +5,6 @@ import RootLayout from "../layout";
 export async function getStaticProps() {
   const workouts = await prisma.workout.findMany();
 
-  console.log("the workouts", workouts);
   return {
     props: { workouts },
     revalidate: 10,
@@ -14,7 +13,6 @@ export async function getStaticProps() {
 
 //@ts-ignore
 const Home = (props) => {
-  console.log("hello workouts", props.workouts);
   return (
     <RootLayout>
       <HomePage />

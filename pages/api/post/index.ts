@@ -5,7 +5,6 @@ import prisma from "../../../lib/prisma";
 // @ts-ignore
 export default async function handle(req, res) {
   const { name, type, muscle, difficulty, equipment, instructions } = req.body;
-  console.log("name: " + name);
 
   // const session = await getSession({ req });
   // @ts-ignore

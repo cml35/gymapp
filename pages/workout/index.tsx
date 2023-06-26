@@ -18,8 +18,6 @@ const Workouts = ({ workouts }) => {
   const [data, setData] = useState<Workout[]>([]);
   const [isLoading, setLoading] = useState(false);
 
-  console.log("workouts", workouts);
-
   useEffect(() => {
     setLoading(true);
     setData(workouts);
