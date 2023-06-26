@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Exercise } from "../../types";
 import ExerciseItem from "../../components/ExerciseItem";
 import prisma from "../../lib/prisma";
+import RootLayout from "../../layout";
 
 export async function getStaticProps() {
   const exercises = await prisma.workout.findMany();
@@ -28,7 +29,7 @@ const ExerciseList = ({ exercises }) => {
   if (!data) return <p>No profile data</p>;
 
   return (
-    <>
+    <RootLayout>
       <div className="h-screen flex flex-col items-center justify-center">
         <h1 className="text-4xl mb-8">Ready to get sweatin??</h1>
         <div className="flex flex-col" key={Math.random()}>
@@ -67,7 +68,7 @@ const ExerciseList = ({ exercises }) => {
           </div>
         </div>
       </div>
-    </>
+    </RootLayout>
   );
 };
 

@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   }, [status]);
 
   const renderLogin = () => {
-    return <Link href="/api/auth/signin">Log in</Link>;
+    return <Link href="/api/auth/signin">LOG IN</Link>;
   };
 
   const renderStatus = () => {
@@ -24,13 +24,13 @@ const Header: React.FC = () => {
   const renderLogout = () => {
     return (
       <button onClick={() => signOut()}>
-        <a>Log out</a>
+        <a>LOG OUT</a>
       </button>
     );
   };
 
   //@ts-ignore
-  const HeaderBody = (status) => {
+  const UserStatus = (status) => {
     if (status === "loading") {
       return renderStatus();
     }
@@ -42,8 +42,15 @@ const Header: React.FC = () => {
   };
 
   return (
-    <nav className="text-white text-xl">
-      <HeaderBody session={session} status={status} />
+    <nav className="text-black text-xl bg-white px-10 pt-2 border outline-dotted">
+      <div className="-mb-px flex justify-center">
+        <div className="no-underline uppercase tracking-wide font-bold text-xs py-3 mr-8 hover:bg-hover-neonGreen">
+          <UserStatus session={session} status={status} />
+        </div>
+        <button className="no-underline uppercase tracking-wide font-bold text-xs py-3 mr-8 hover:bg-hover-neonGreen">
+          <Link href="/home">Home</Link>
+        </button>
+      </div>
     </nav>
   );
 };
