@@ -2,42 +2,41 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Workout } from "../types";
-import { useWorkoutContext } from "../providers/WorkoutProvider";
+import { Exercise } from "../types";
+import { useExerciseContext } from "../providers/WorkoutProvider";
 import dumbbellImg from "../images/dumbbell.jpeg";
 
-interface WorkoutOptionItemProps {
-  workout: Workout;
+interface ExerciseItemProps {
+  exercise: Exercise;
 }
 
-const WorkoutOptionItem = (props: WorkoutOptionItemProps) => {
-  const { workout } = props;
-  const { selectedWorkout, setSelectedWorkout } = useWorkoutContext();
+const ExerciseItem = (props: ExerciseItemProps) => {
+  const { exercise } = props;
+  const { setSelectedExercise: setSelectedWorkout } = useExerciseContext();
   const router = useRouter();
 
-  const handleOnClick = (workout: Workout) => {
-    setSelectedWorkout(workout);
-    console.log("workout selected", selectedWorkout);
-    router.push("/details");
+  const handleOnClick = (exercise: Exercise) => {
+    setSelectedWorkout(exercise);
+    router.push("/exercise-details");
   };
 
   return (
     <>
       <tr>
         <td className="px-6 py-4 whitespace-nowrap">
-          <Image width={40} height={40} src={dumbbellImg} alt={workout.name} />
+          <Image width={40} height={40} src={dumbbellImg} alt={exercise.name} />
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-          {workout.name}
+          {exercise.name}
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-          {workout.type}
+          {exercise.type}
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
           <button
             onClick={(e) => {
               e.preventDefault();
-              handleOnClick(workout);
+              handleOnClick(exercise);
             }}
             className="bg-hover-neonGreen p-2"
           >
@@ -49,4 +48,4 @@ const WorkoutOptionItem = (props: WorkoutOptionItemProps) => {
   );
 };
 
-export default WorkoutOptionItem;
+export default ExerciseItem;

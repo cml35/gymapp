@@ -42,7 +42,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <nav className="text-white text-lg">
+    <nav className="text-white text-xl">
       <HeaderBody session={session} status={status} />
     </nav>
   );

@@ -1,14 +1,14 @@
 import "../styles/globals.css";
-import { WorkoutProvider } from "../providers/WorkoutProvider";
+import { ExerciseProvider } from "../providers/WorkoutProvider";
 import { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <SessionProvider>
-      <WorkoutProvider>
+      <ExerciseProvider>
         <Component {...pageProps} />
-      </WorkoutProvider>
+      </ExerciseProvider>
     </SessionProvider>
   );
 };

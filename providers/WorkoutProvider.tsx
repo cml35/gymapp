@@ -1,31 +1,37 @@
 "use client";
 
 import { useState, createContext, useContext } from "react";
-import { Workout } from "../types";
+import { Exercise } from "../types";
 
-type WorkoutContextType = {
-  selectedWorkout?: Workout;
-  setSelectedWorkout: (workout: Workout | undefined) => void;
+type ExerciseContextType = {
+  selectedExercise?: Exercise;
+  setSelectedExercise: (exercise: Exercise | undefined) => void;
 };
 
 const initialContext = {
-  selectedWorkout: undefined,
-  setSelectedWorkout: (_workout: Workout | undefined) => {},
+  selectedExercise: undefined,
+  setSelectedExercise: (_exercise: Exercise | undefined) => {},
 };
 
-export const WorkoutContext = createContext<WorkoutContextType>(initialContext);
+export const ExerciseContext =
+  createContext<ExerciseContextType>(initialContext);
 
 // @ts-ignore
-export const WorkoutProvider = ({ children }) => {
-  const [selectedWorkout, setSelectedWorkout] = useState<Workout | undefined>(
-    undefined
-  );
+export const ExerciseProvider = ({ children }) => {
+  const [selectedExercise, setSelectedExercise] = useState<
+    Exercise | undefined
+  >(undefined);
 
   return (
-    <WorkoutContext.Provider value={{ selectedWorkout, setSelectedWorkout }}>
+    <ExerciseContext.Provider
+      value={{
+        selectedExercise,
+        setSelectedExercise,
+      }}
+    >
       {children}
-    </WorkoutContext.Provider>
+    </ExerciseContext.Provider>
   );
 };
 
-export const useWorkoutContext = () => useContext(WorkoutContext);
+export const useExerciseContext = () => useContext(ExerciseContext);

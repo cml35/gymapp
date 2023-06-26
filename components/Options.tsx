@@ -1,16 +1,16 @@
 import Link from "next/link";
 
-const OptionList = () => {
+const Options = () => {
   return (
     <div className="space-y-8 flex flex-col text-4xl mt-8">
       <button className="hover:bg-hover-neonGreen">
-        <Link href="/workout">Browse Workouts</Link>
+        <Link href="/exercise-list">Browse exercise list</Link>
       </button>
       <button className="hover:bg-hover-neonGreen">
-        <Link href="/create">Create Workout</Link>
+        <Link href="/add-exercise">Add new exercise</Link>
       </button>
     </div>
   );
 };
 
-export default OptionList;
+export default Options;

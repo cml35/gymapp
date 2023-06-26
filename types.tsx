@@ -1,4 +1,4 @@
-export interface Workout {
+export interface Exercise {
   difficulty: string;
   equipment: string;
   instructions: string;

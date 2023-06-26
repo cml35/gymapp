@@ -1,28 +1,28 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Workout } from "../../types";
-import WorkoutOptionItem from "../../components/WorkoutOptionItem";
+import { Exercise } from "../../types";
+import ExerciseItem from "../../components/ExerciseItem";
 import prisma from "../../lib/prisma";
 
 export async function getStaticProps() {
-  const workouts = await prisma.workout.findMany();
+  const exercises = await prisma.workout.findMany();
 
   return {
-    props: { workouts },
+    props: { exercises },
     revalidate: 10,
   };
 }
 
 //@ts-ignore
-const Workouts = ({ workouts }) => {
-  const [data, setData] = useState<Workout[]>([]);
+const ExerciseList = ({ exercises }) => {
+  const [data, setData] = useState<Exercise[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    setData(workouts);
+    setData(exercises);
     setLoading(false);
-  }, [workouts]);
+  }, [exercises]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No profile data</p>;
@@ -57,10 +57,8 @@ const Workouts = ({ workouts }) => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                    {data.map((workout, index) => {
-                      return (
-                        <WorkoutOptionItem key={index} workout={workout} />
-                      );
+                    {data.map((exercise, index) => {
+                      return <ExerciseItem key={index} exercise={exercise} />;
                     })}
                   </tbody>
                 </table>
@@ -73,4 +71,4 @@ const Workouts = ({ workouts }) => {
   );
 };
 
-export default Workouts;
+export default ExerciseList;

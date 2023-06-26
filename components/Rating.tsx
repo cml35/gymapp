@@ -1,15 +1,15 @@
-import { Workout } from "../app/types";
+import { Exercise } from "../types";
 
-interface RatingProps {
-  workout: Workout;
+interface ExerciseRatingProps {
+  exercise: Exercise;
 }
 
-const Rating = (props: RatingProps) => {
-  const { workout } = props;
+const ExerciseRating = (props: ExerciseRatingProps) => {
+  const { exercise } = props;
   const ratings = [
-    { name: "Difficulty", rating: workout.difficulty },
-    { name: "Muscle Group", rating: workout.muscle },
-    { name: "Equipment", rating: workout.equipment },
+    { name: "Difficulty", rating: exercise.difficulty },
+    { name: "Muscle Group", rating: exercise.muscle },
+    { name: "Equipment", rating: exercise.equipment },
   ];
 
   return (
@@ -28,4 +28,4 @@ const Rating = (props: RatingProps) => {
   );
 };
 
-export default Rating;
+export default ExerciseRating;

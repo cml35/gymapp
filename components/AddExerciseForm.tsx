@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const CreateWorkoutForm: React.FC = () => {
+const AddExerciseForm: React.FC = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [muscle, setMuscle] = useState("");
@@ -12,7 +12,7 @@ const CreateWorkoutForm: React.FC = () => {
   const [difficulty, setDifficulty] = useState("");
   const [instructions, setInstructions] = useState("");
 
-  const submitWorkout = async (e: React.SyntheticEvent) => {
+  const submitExercise = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     try {
       const body = { name, muscle, type, equipment, difficulty, instructions };
@@ -21,7 +21,7 @@ const CreateWorkoutForm: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      await router.push("/workout");
+      await router.push("/exercise-list");
     } catch (error) {
       console.error(error);
     }
@@ -29,9 +29,9 @@ const CreateWorkoutForm: React.FC = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold mb-10">Create new workout</h1>
+      <h1 className="text-3xl font-semibold mb-10">Add new exercise</h1>
       <div className="flex flex-row color-black">
-        <form onSubmit={submitWorkout}>
+        <form onSubmit={submitExercise}>
           <p className="mr-10">Name</p>
           <input
             onChange={(e) => setName(e.target.value)}
@@ -79,7 +79,7 @@ const CreateWorkoutForm: React.FC = () => {
             type="textarea"
             value={instructions}
           />
-          <input disabled={!name || !muscle} type="submit" value="Create" />
+          <input disabled={!name || !muscle} type="submit" value="Add" />
           <a className="back" href="#" onClick={() => router.push("/")}>
             or Cancel
           </a>
@@ -89,4 +89,4 @@ const CreateWorkoutForm: React.FC = () => {
   );
 };
 
-export default CreateWorkoutForm;
+export default AddExerciseForm;
