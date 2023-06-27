@@ -22,11 +22,7 @@ const Header: React.FC = () => {
   };
 
   const renderLogout = () => {
-    return (
-      <button onClick={() => signOut()}>
-        <a>LOG OUT</a>
-      </button>
-    );
+    return <button onClick={() => signOut()}>LOGOUT</button>;
   };
 
   //@ts-ignore
@@ -42,14 +38,14 @@ const Header: React.FC = () => {
   };
 
   return (
-    <nav className="text-black text-xl px-10 pt-2 border outline-dotted">
-      <div className="-mb-px flex justify-center">
-        <div className="no-underline uppercase tracking-wide font-bold text-xs py-3 mr-8 hover:bg-hover-neonGreen">
-          <UserStatus session={session} status={status} />
-        </div>
-        <button className="no-underline uppercase tracking-wide font-bold text-xs py-3 mr-8 hover:bg-hover-neonGreen">
+    <nav className="text-black text-xl p-auto m-auto border border-solid">
+      <div className="flex justify-center">
+        <button className="no-underline uppercase font-bold text-md p-4 hover:bg-hover-neonGreen">
           <Link href="/home">Home</Link>
         </button>
+        <div className="no-underline uppercase font-bold text-md p-4 hover:bg-hover-neonGreen">
+          <UserStatus session={session} status={status} />
+        </div>
       </div>
     </nav>
   );

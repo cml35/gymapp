@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import { Exercise } from "../../types";
 import ExerciseItem from "../../components/ExerciseItem";
@@ -31,7 +30,7 @@ const ExerciseList = ({ exercises }) => {
   return (
     <RootLayout>
       <div className="h-screen flex flex-col items-center justify-center">
-        <h1 className="text-4xl mb-8">Ready to get sweatin??</h1>
+        <h1 className="text-4xl mb-8">Exercise List</h1>
         <div className="flex flex-col" key={Math.random()}>
           <div className="-m-1.5 overflow-x-auto">
             <div className="p-1.5 min-w-full inline-block align-middle">
@@ -51,6 +50,10 @@ const ExerciseList = ({ exercises }) => {
                       >
                         Type
                       </th>
+                      <th
+                        scope="col"
+                        className="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                      ></th>
                       <th
                         scope="col"
                         className="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase"

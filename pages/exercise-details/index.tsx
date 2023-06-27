@@ -1,5 +1,3 @@
-"use client";
-
 import ExerciseDetails from "../../components/ExerciseDetails";
 import { useExerciseContext } from "../../providers/ExerciseProvider";
 import RootLayout from "../../layout";

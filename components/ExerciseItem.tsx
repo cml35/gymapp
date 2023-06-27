@@ -33,6 +33,11 @@ const ExerciseItem = (props: ExerciseItemProps) => {
     }
   };
 
+  const handleEdit = async (exercise: Exercise) => {
+    setSelectedExercise(exercise);
+    await router.push("/add-exercise");
+  };
+
   return (
     <>
       <tr>
@@ -65,6 +70,17 @@ const ExerciseItem = (props: ExerciseItemProps) => {
             className="bg-hover-neonGreen p-2"
           >
             Delete
+          </button>
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleEdit(exercise);
+            }}
+            className="bg-hover-neonGreen p-2"
+          >
+            Edit
           </button>
         </td>
       </tr>

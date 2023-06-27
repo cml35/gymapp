@@ -29,3 +29,7 @@ body {
 #exerciseForm input[type="text"] {
   color: black !important;
 }
+
+#exerciseForm input[type="textarea"] {
+  color: black !important;
+}
