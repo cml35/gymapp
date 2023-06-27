@@ -1,7 +1,10 @@
 import prisma from "../../../lib/prisma";
+import { NextApiRequest, NextApiResponse } from "next";
 
-//@ts-ignore
-export default async function handle(req, res) {
+export default async function handle(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const exerciseId = req.query.id;
   if (req.method === "DELETE") {
     const exercise = await prisma.workout.delete({

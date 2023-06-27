@@ -3,7 +3,6 @@
 import AddExerciseForm from "../../components/AddExerciseForm";
 import RootLayout from "../../layout";
 
-//@ts-ignore
 const AddExercise = () => {
   return (
     <RootLayout>

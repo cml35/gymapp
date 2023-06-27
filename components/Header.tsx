@@ -1,4 +1,3 @@
-// Header.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -25,8 +24,7 @@ const Header: React.FC = () => {
     return <button onClick={() => signOut()}>LOGOUT</button>;
   };
 
-  //@ts-ignore
-  const UserStatus = (status) => {
+  const UserStatus = (status: string) => {
     if (status === "loading") {
       return renderStatus();
     }

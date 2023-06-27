@@ -9,7 +9,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  //talk about this issue
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);

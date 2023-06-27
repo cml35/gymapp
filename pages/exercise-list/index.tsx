@@ -19,7 +19,6 @@ export async function getStaticProps() {
   };
 }
 
-//@ts-ignore
 const ExerciseList = ({ exercises }) => {
   const [data, setData] = useState<Exercise[]>([]);
   const [isLoading, setLoading] = useState(false);

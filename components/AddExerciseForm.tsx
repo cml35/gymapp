@@ -32,7 +32,7 @@ const AddExerciseForm = () => {
   const SUCCESS_TOAST_TEXT = selectedExercise
     ? "Successfully updated the"
     : "Successfully added the new";
-  const TEXT = selectedExercise ? "Edit exercise" : "Add new exercise";
+  const TITLE_TEXT = selectedExercise ? "Edit exercise" : "Add new exercise";
 
   const handleSubmit = useCallback(
     async (e: React.SyntheticEvent) => {
@@ -82,7 +82,7 @@ const AddExerciseForm = () => {
   const SubmitButton = () => {
     return (
       <div className="cursor-pointer border box-border mt-10 p-5 text-center hover:bg-hover-neonGreen">
-        <input disabled={!name || !muscle} type="submit" value={TEXT} />
+        <input disabled={!name || !muscle} type="submit" value={TITLE_TEXT} />
       </div>
     );
   };
@@ -90,7 +90,7 @@ const AddExerciseForm = () => {
   return (
     <>
       <div id="exerciseForm" className="w-full">
-        <h1 className="text-3xl text-center font-semibold">{TEXT}</h1>
+        <h1 className="text-3xl text-center font-semibold">{TITLE_TEXT}</h1>
         <form id="exercise-form" className="mt-24" onSubmit={handleSubmit}>
           <div className="mb-3">
             <p className="mr-10">Name</p>

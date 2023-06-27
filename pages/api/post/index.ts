@@ -1,13 +1,14 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 
-// POST /api/post
-// @ts-ignore
-export default async function handle(req, res) {
+export default async function handle(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { name, type, muscle, difficulty, equipment, instructions, id } =
     req.body;
   let result;
 
-  // @ts-ignore
   if (id) {
     result = await prisma.workout.upsert({
       where: {
