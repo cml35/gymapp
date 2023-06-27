@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import { Exercise } from "../../types";
 import ExerciseItem from "../../components/ExerciseItem";
-import prisma from "../../lib/prisma";
 import RootLayout from "../../layout";
 
-export async function getStaticProps() {
-  const exercises = await prisma.workout.findMany();
+export async function loadExercises() {
+  const data = await fetch(process.env.URL + "/api/get", {
+    method: "GET",
+  });
+  const exercises = await data.json();
+  return exercises;
+}
 
+export async function getStaticProps() {
+  const exercises = await loadExercises();
   return {
     props: { exercises },
     revalidate: 10,

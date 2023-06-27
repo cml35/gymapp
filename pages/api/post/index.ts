@@ -1,4 +1,3 @@
-import { getSession } from "next-auth/react";
 import prisma from "../../../lib/prisma";
 
 // POST /api/post
@@ -8,7 +7,6 @@ export default async function handle(req, res) {
     req.body;
   let result;
 
-  console.log("the id", id);
   // @ts-ignore
   if (id) {
     result = await prisma.workout.upsert({
