@@ -16,8 +16,7 @@ const initialContext = {
 export const ExerciseContext =
   createContext<ExerciseContextType>(initialContext);
 
-// @ts-ignore
-export const ExerciseProvider = ({ children }) => {
+export const ExerciseProvider = ({ children }: any) => {
   const [selectedExercise, setSelectedExercise] = useState<
     Exercise | undefined
   >(undefined);

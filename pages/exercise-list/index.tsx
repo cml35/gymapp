@@ -3,7 +3,7 @@ import { Exercise } from "../../types";
 import ExerciseItem from "../../components/ExerciseItem";
 import RootLayout from "../../layout";
 
-export async function loadExercises() {
+export async function loadExercises(): Promise<Exercise[]> {
   const data = await fetch(process.env.URL + "/api/get", {
     method: "GET",
   });
@@ -15,11 +15,14 @@ export async function getStaticProps() {
   const exercises = await loadExercises();
   return {
     props: { exercises },
-    revalidate: 10,
   };
 }
 
-const ExerciseList = ({ exercises }) => {
+interface ExerciseListProps {
+  exercises: Exercise[];
+}
+
+const ExerciseList = ({ exercises }: ExerciseListProps) => {
   const [data, setData] = useState<Exercise[]>([]);
   const [isLoading, setLoading] = useState(false);
 
