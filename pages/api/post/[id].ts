@@ -14,26 +14,3 @@ export default async function handle(req, res) {
     );
   }
 }
-
-// if (req.method === "PUT") {
-//     const { name, type, muscle, difficulty, equipment, instructions } =
-//       req.body;
-//     const post = await prisma.workout.update({
-//       where: {
-//         id: exerciseId,
-//       },
-//       data: {
-//         name,
-//         type,
-//         muscle,
-//         difficulty,
-//         equipment,
-//         instructions,
-//       },
-//     });
-//     res.json(post);
-//   } else {
-//     throw new Error(
-//       `The HTTP ${req.method} method is not supported at this route.`
-//     );
-//   }

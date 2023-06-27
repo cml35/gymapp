@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Exercise } from "../types";
 import { useExerciseContext } from "../providers/ExerciseProvider";
 import dumbbellImg from "../images/dumbbell.jpeg";
-import RootLayout from "../layout";
+import { toast } from "react-toastify";
 
 interface ExerciseItemProps {
   exercise: Exercise;
@@ -27,7 +27,12 @@ const ExerciseItem = (props: ExerciseItemProps) => {
       await fetch(`/api/post/${id}`, {
         method: "DELETE",
       });
-      await router.push("/exercise-list");
+      toast(`Successfully delete ${exercise.name} exercise`, {
+        hideProgressBar: true,
+        autoClose: 2000,
+        type: "success",
+      });
+      await router.replace(window.location.pathname);
     } catch (error) {
       console.error(error);
     }

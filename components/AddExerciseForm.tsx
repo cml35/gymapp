@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useCallback, useState } from "react";
 import { useExerciseContext } from "../providers/ExerciseProvider";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const AddExerciseForm = () => {
-  const { selectedExercise, setSelectedExercise } = useExerciseContext();
   const router = useRouter();
+  const { selectedExercise, setSelectedExercise } = useExerciseContext();
 
   const [name, setName] = useState(
     selectedExercise ? selectedExercise.name : ""
@@ -28,10 +29,14 @@ const AddExerciseForm = () => {
   );
 
   const EXERCISE_FIELDS_CLASSNAME = "mt-3 p-3 w-full";
+  const SUCCESS_TOAST_TEXT = selectedExercise
+    ? "Successfully updated the"
+    : "Successfully added the new";
+  const TEXT = selectedExercise ? "Edit exercise" : "Add new exercise";
 
-  const submitExercise = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    try {
+  const handleSubmit = useCallback(
+    async (e: React.SyntheticEvent) => {
+      e.preventDefault();
       const body = {
         id: selectedExercise ? selectedExercise.id : null,
         name,
@@ -47,16 +52,37 @@ const AddExerciseForm = () => {
         body: JSON.stringify(body),
       });
       setSelectedExercise(undefined);
+      setName("");
+      setType("");
+      setMuscle("");
+      setEquipment("");
+      setDifficulty("");
+      setInstructions("");
+      toast(`${SUCCESS_TOAST_TEXT} ${name} exercise`, {
+        hideProgressBar: true,
+        autoClose: 2000,
+        type: "success",
+      });
       await router.push("/exercise-list");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    },
+    [
+      SUCCESS_TOAST_TEXT,
+      router,
+      difficulty,
+      equipment,
+      instructions,
+      muscle,
+      name,
+      selectedExercise,
+      setSelectedExercise,
+      type,
+    ]
+  );
 
   const SubmitButton = () => {
     return (
       <div className="cursor-pointer border box-border mt-10 p-5 text-center hover:bg-hover-neonGreen">
-        <input disabled={!name || !muscle} type="submit" value="Add exercise" />
+        <input disabled={!name || !muscle} type="submit" value={TEXT} />
       </div>
     );
   };
@@ -64,7 +90,8 @@ const AddExerciseForm = () => {
   return (
     <>
       <div id="exerciseForm" className="w-full">
-        <form className="mt-24" onSubmit={submitExercise}>
+        <h1 className="text-3xl text-center font-semibold">{TEXT}</h1>
+        <form id="exercise-form" className="mt-24" onSubmit={handleSubmit}>
           <div className="mb-3">
             <p className="mr-10">Name</p>
             <input

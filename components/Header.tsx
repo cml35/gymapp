@@ -38,7 +38,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <nav className="text-black text-xl p-auto m-auto border border-solid">
+    <nav className="sticky top-0 text-black text-xl p-auto m-auto border border-solid">
       <div className="flex justify-center">
         <button className="no-underline uppercase font-bold text-md p-4 hover:bg-hover-neonGreen">
           <Link href="/home">Home</Link>
